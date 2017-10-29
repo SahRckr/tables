@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Table, Header, Image, Icon, Flag } from 'semantic-ui-react'
 
 const capitalizedStyle = {

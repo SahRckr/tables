@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Menu, Segment } from 'semantic-ui-react'
+import { Container, Menu } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import InfiniteComponent from './Component/InfiniteComponent'
@@ -56,7 +56,7 @@ class App extends Component {
   }
 
   render() {
-    const { activeItem, tableData, page } = this.state
+    const { activeItem } = this.state
     return (
       <Container>
         <br />
@@ -65,7 +65,7 @@ class App extends Component {
           <Menu.Item name='Paginated' active={activeItem === 'Paginated'} onClick={this.handleItemClick} />
         </Menu>
         <Container>
-          {this.getSegment(activeItem, tableData)}         
+          {this.getSegment(activeItem)}         
         </Container>
       </Container>
     )
