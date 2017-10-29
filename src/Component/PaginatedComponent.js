@@ -18,7 +18,7 @@ class PaginatedComponent extends Component {
         const {tableData, page} = this.props
         return (
             <div>
-                <Input className="ui right floated" value={this.props.page} type='number' min={1} placeholder='Enter Page Number' onChange={(e)=>this.props.updatePage(e)} />
+                <Input className="ui right floated" type='number' min={1} placeholder='Enter Page Number' onChange={(e)=>this.props.updatePage(e)} />
                 <Button.Group floated="right">
                     <Button secondary disabled={!(page>1)} content='Previous' icon='left arrow' labelPosition='left' onClick={(e)=>this.props.updatePage(e)}/>
                     <Button.Or text={page}/>
