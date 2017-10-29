@@ -1,28 +1,16 @@
 import React, { Component } from 'react'
 import TableComponent from './Table'
+import {Loader} from 'semantic-ui-react' 
 
 class InfiniteComponent extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            tableData : []
-        }
-    }
 
     componentWillMount = () => {
-        fetch('https://randomuser.me/api/?results=5000',{method: 'GET'}).then((response)=>response.json())
-            .then(response=>{
-                this.setState({tableData: response.results})
-            })
+        this.props.getData()
     }
 
     render = () => {
-        const {tableData} = this.state
-        return (
-            <div>
-                { tableData.length && <TableComponent tableData={tableData}/>}
-            </div>
-        )
+        const {tableData} = this.props
+        return tableData.length ? <TableComponent tableData={tableData}/> : <Loader active inline='centered'/>       
     }
 }
 
