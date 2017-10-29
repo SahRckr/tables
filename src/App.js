@@ -26,14 +26,18 @@ class App extends Component {
     })
   }
 
-  updatePage = (e, increment) => {
+  updatePage = (e, increment, pageNumber) => {
     e.preventDefault()
     let {page} = this.state
+    page = parseInt(page, 10)
     if(increment){
       page = page + 1
+    } else if(pageNumber) {
+      page = pageNumber
     } else {
-      page = e.target.value || page -- 
+      page = page - 1
     }
+    console.log("page", page)
     this.setState({page})
   }
 

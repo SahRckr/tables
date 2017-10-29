@@ -3,6 +3,12 @@ import TableComponent from './Table'
 import {Loader, Button, Input} from 'semantic-ui-react' 
 
 class PaginatedComponent extends Component {
+    constructor(props){
+        super(props)
+        this.state= {
+            inputPage : null
+        }
+    }
 
     componentWillMount = () => {
         this.props.getData(this.props.page)
@@ -18,7 +24,16 @@ class PaginatedComponent extends Component {
         const {tableData, page} = this.props
         return (
             <div>
-                <Input className="ui right floated" type='number' min={1} placeholder='Enter Page Number' onChange={(e)=>this.props.updatePage(e)} />
+                <Input 
+                    type='number' 
+                    min={1}
+                    placeholder='Enter Page Number' 
+                    onChange={e=>this.setState({inputPage: e.target.value})} 
+                    action={
+                        <Button 
+                            color='teal' 
+                            onClick={(e)=>this.props.updatePage(e, null, this.state.inputPage)}>Go</Button>} 
+                />
                 <Button.Group floated="right">
                     <Button secondary disabled={!(page>1)} content='Previous' icon='left arrow' labelPosition='left' onClick={(e)=>this.props.updatePage(e)}/>
                     <Button.Or text={page}/>
